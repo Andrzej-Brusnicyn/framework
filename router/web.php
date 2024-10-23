@@ -17,7 +17,7 @@ switch ($requestUri) {
 
     case '/add':
 
-        include 'form.html';
+        include 'pages/form.html';
         break;
 
     default:
