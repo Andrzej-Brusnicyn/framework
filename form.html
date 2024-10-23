@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="addUser.php" method="post">
+        <fieldset>
+
+            <legend>Registration</legend>
+
+            <div>
+                <label for="name">Your first and last name</label>
+                <div>
+                    <div>
+                        <input  name="name" id="name" placeholder="Name" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <div>
+                    <div>
+                        <input  name="password" id="password" placeholder="Password" type="password">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="email">E-Mail</label>
+                <div>
+                    <div>
+                        <input name="email" id="email" placeholder="E-Mail Address" type="email">
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <label for="gender">Gender</label>
+                <div>
+                    <div>
+                        <select name="gender" id="gender">
+                            <option value=" " >Select</option>
+                            <option value="m">male</option>
+                            <option value="f">female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="status">Status</label>
+                <div>
+                    <div>
+                        <select name="status" id="status">
+                            <option value=" " >Select</option>
+                            <option value="a">active</option>
+                            <option value="i">inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <button type="submit">Add user</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</body>
+</html>
