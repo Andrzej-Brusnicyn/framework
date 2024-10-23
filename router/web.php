@@ -1,6 +1,6 @@
 <?php
 
-namespace Router\Router;
+namespace Router\Web;
 
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -15,17 +15,7 @@ switch ($requestUri) {
         include 'pages/users.php';
         break;
 
-    case '/users/':
-
-        include 'pages/users.php';
-        break;
-
     case '/add':
-
-        include 'form.html';
-        break;
-
-    case '/add/':
 
         include 'form.html';
         break;
