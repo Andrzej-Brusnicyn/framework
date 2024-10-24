@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+  <link rel="stylesheet" href="assets/css/main.css">
     <title>Title</title>
 </head>
 <body>
-    <form action="../addUser.php" method="post">
-        <fieldset>
-
-            <legend>Registration</legend>
+<div class="wrapper">
+    <form action="../addUser.php" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Registration</h2>
 
             <div>
                 <label for="name">Your first and last name</label>
                 <div>
                     <div>
-                        <input  name="name" id="name" placeholder="Name" type="text">
+                        <input class="form-control" name="name" id="name" placeholder="Name" type="text">
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <label for="password">Password</label>
                 <div>
                     <div>
-                        <input  name="password" id="password" placeholder="Password" type="password">
+                        <input class="form-control" name="password" id="password" placeholder="Password" type="password">
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <label for="email">E-Mail</label>
                 <div>
                     <div>
-                        <input name="email" id="email" placeholder="E-Mail Address" type="email">
+                        <input class="form-control" name="email" id="email" placeholder="E-Mail Address" type="email">
                     </div>
                 </div>
             </div>
@@ -69,8 +69,7 @@
                     <button type="submit">Add user</button>
                 </div>
             </div>
-
-        </fieldset>
     </form>
+</div>
 </body>
 </html>
