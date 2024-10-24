@@ -7,27 +7,27 @@ $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 switch ($requestUri) {
     case '/':
 
-        include 'pages/main.php';
+        include 'views/main.php';
         break;
 
     case '/users':
 
-        include 'pages/users.php';
+        include 'views/users.php';
         break;
 
     case '/add':
 
-        include 'pages/form.html';
+        include 'views/form.html';
         break;
 
     default:
 
         if (preg_match('/^\/users\/(\d+)\/?$/', $requestUri, $matches)) {
             $userId = $matches[1];
-            include 'pages/user.php';
+            include 'views/user.php';
         } else {
 
-            include 'pages/404.php';
+            include 'views/404.php';
         }
         break;
 }
