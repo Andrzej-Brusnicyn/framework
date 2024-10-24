@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userData = $database->getUser($email);
 
         if ($userData) {
-            echo 'User added successfully! ' . PHP_EOL;
+            echo "User added successfully! \n";
             foreach ($userData as $key => $value) {
-                echo "$key: $value ";
+                echo "$key: $value \n";
             }
         } else {
             echo 'Error retrieving user data.';
