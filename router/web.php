@@ -7,12 +7,13 @@ $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 switch ($requestUri) {
     case '/':
 
-        include 'views/main.php';
+        include 'views/main.html';
         break;
 
     case '/users':
-
-        include 'views/users.php';
+        $users = $database->getAllUsers();
+        $template = $twig->load('users.html.twig');
+        echo $template->render(["users" => $users]);
         break;
 
     case '/add':
@@ -20,20 +21,17 @@ switch ($requestUri) {
         include 'views/form.html';
         break;
 
-    case '/home':
-
-        $template = $twig->load('home.html.twig');
-        echo $template->render(['text' => 'Welcome to the home page!']);
-        break;
 
     default:
 
         if (preg_match('/^\/users\/(\d+)\/?$/', $requestUri, $matches)) {
             $userId = $matches[1];
-            include 'views/user.php';
+            $user = $database->getUserById($userId);
+            $template = $twig->load('user.html.twig');
+            echo $template->render(["user" => $user]);
         } else {
 
-            include 'views/404.php';
+            include 'views/404.html';
         }
         break;
 }

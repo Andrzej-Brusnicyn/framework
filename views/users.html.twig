@@ -1,0 +1,10 @@
+<h1>List of Users</h1>
+<ul>
+  {% if users %}
+    {% for user in users %}
+    <li><a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a></li>
+    {% endfor %}
+  {% else %}
+    <span>No users yet</span>
+  {% endif %}
+</ul>
