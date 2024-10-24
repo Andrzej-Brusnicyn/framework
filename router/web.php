@@ -20,6 +20,12 @@ switch ($requestUri) {
         include 'views/form.html';
         break;
 
+    case '/home':
+
+        $template = $twig->load('home.html.twig');
+        echo $template->render(['text' => 'Welcome to the home page!']);
+        break;
+
     default:
 
         if (preg_match('/^\/users\/(\d+)\/?$/', $requestUri, $matches)) {
