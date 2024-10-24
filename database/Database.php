@@ -61,4 +61,13 @@ class Database {
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function deleteUserById($id) {
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+
+    }
+
 }
