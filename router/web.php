@@ -1,4 +1,5 @@
 <?php
+
 namespace Router\Web;
 
 use Controllers\UserController;
@@ -10,15 +11,15 @@ $controller = new UserController();
 
 switch ($requestUri) {
     case '/':
-        $controller->index();
+        include 'views/main.html';
         break;
 
     case '/users':
-        $controller->listUsers();
+        $controller->index();
         break;
 
     case '/add':
-        $controller->addUserForm();
+        $controller->userForm();
         break;
 
     case '/addUser':
@@ -31,14 +32,14 @@ switch ($requestUri) {
 
     default:
         if (preg_match('/^\/users\/(\d+)\/?$/', $requestUri, $matches)) {
-            $userId = $matches[1];
+            $userId = (int)$matches[1];
 
             if ($requestMethod === 'GET') {
-                $controller->viewUser($userId);
+                $controller->show($userId);
             } elseif ($requestMethod === 'DELETE') {
-                $controller->deleteUser($userId);
+                $controller->delete($userId);
             } else {
-                http_response_code(405); // Method Not Allowed
+                http_response_code(405);
                 echo "Method not allowed";
             }
         } else {

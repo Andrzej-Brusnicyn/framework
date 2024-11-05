@@ -1,7 +1,9 @@
 <?php
-include 'database/Database.php';
 
-$database = Database::getInstance();
+include 'database/DatabaseConnection.php';
+use Database\DatabaseConnection;
+
+$database = DatabaseConnection::getInstance();
 $conn = $database->getConnection();
 
 $stmt = $conn->query("SELECT * FROM migrations ORDER BY executed_at DESC LIMIT 1");
@@ -17,7 +19,6 @@ if ($lastMigration) {
         $className = 'Migration_' . substr($migrationName, 15);
 
         if (class_exists($className)) {
-
             $migration = new $className();
             $migration->down($conn);
 

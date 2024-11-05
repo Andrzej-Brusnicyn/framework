@@ -10,10 +10,19 @@
 </head>
 <body>
 <h1>List of Users</h1>
+
+<form method="get" action="">
+  <label for="source">Источник данных:</label>
+  <select name="source" id="source" onchange="this.form.submit()">
+    <option value="local" {% if source == 'local' %}selected{% endif %}>Локальная база данных</option>
+    <option value="api" {% if source == 'api' %}selected{% endif %}>gorest REST API</option>
+  </select>
+</form>
+
 <ul>
   {% if users %}
     {% for user in users %}
-      <li><a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a></li>
+      <li><a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a> ({{ user['email'] }})</li>
     {% endfor %}
   {% else %}
     <span>No users yet</span>

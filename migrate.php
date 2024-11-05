@@ -31,10 +31,8 @@ foreach ($migrationFiles as $migrationFile) {
         $className = 'Migration_' . substr($migrationName, 15);
 
         if (class_exists($className)) {
-
             $migration = new $className();
             $migration->up($conn);
-
 
             $stmt = $conn->prepare("INSERT INTO migrations (migration_name) VALUES (:migration_name)");
             $stmt->bindParam(':migration_name', $migrationName);

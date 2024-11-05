@@ -1,6 +1,7 @@
 <?php
 
-class Migration_AddPostsTable {
+class Migration_CreatePostsTable {
+
     public function up($conn) {
         $query = "
             CREATE TABLE IF NOT EXISTS posts (
