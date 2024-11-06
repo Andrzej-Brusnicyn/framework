@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/UserModel.php';
+require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../database/DatabaseConnection.php';
 use PHPUnit\Framework\TestCase;
 use Models\UserModel;

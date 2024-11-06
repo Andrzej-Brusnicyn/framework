@@ -1,6 +1,6 @@
 <?php
 require_once 'database/DatabaseConnection.php';
-require_once 'models/UserModel.php';
+require_once 'models/User.php';
 require_once 'controllers/UserController.php';
 require_once 'vendor/autoload.php';
 

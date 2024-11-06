@@ -12,10 +12,10 @@
 <h1>List of Users</h1>
 
 <form method="GET" action="/list">
-  <label for="source">Select Data Source:</label>
+  <label for="source">Источник данных:</label>
   <select name="source" id="source" onchange="this.form.submit()">
-    <option value="local" {% if source == 'local' %}selected{% endif %}>Local Database</option>
-    <option value="api" {% if source == 'api' %}selected{% endif %}>External API</option>
+    <option value="local" {% if source == 'local' %}selected{% endif %}>Локальная база данных</option>
+    <option value="api" {% if source == 'api' %}selected{% endif %}>Gorest REST API”</option>
   </select>
   <input type="hidden" name="page" value="{{ current_page }}">
   <input type="hidden" name="limit" value="{{ limit }}">

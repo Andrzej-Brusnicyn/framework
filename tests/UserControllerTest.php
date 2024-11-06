@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../database/DatabaseConnection.php';
 require_once __DIR__ . '/../controllers/UserController.php';
-require_once __DIR__ . '/../models/UserModel.php';
+require_once __DIR__ . '/../models/User.php';
 use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;

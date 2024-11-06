@@ -2,18 +2,18 @@
 
 namespace Controllers;
 
-use Models\UserModel;
+use Models\User;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 class UserController
 {
-    private UserModel $model;
+    private User $model;
     private Environment $twig;
 
     public function __construct()
     {
-        $this->model = new UserModel();
+        $this->model = new User();
         $loader = new FilesystemLoader('views');
         $this->twig = new Environment($loader);
     }
