@@ -25,6 +25,10 @@
       <li>
         <a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a> ({{ user['email'] }})
         <a href="/users/{{ user['id'] }}/edit">Изменить</a>
+        <form method="post" action="/users/{{ user['id'] }}">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="delete-button" type="submit">Удалить</button>
+        </form>
       </li>
     {% endfor %}
   {% else %}

@@ -77,3 +77,10 @@ button {
   justify-content: center;
   text-align: center;
 }
+.delete-button {
+  display: inline;
+  margin: 5px auto;
+  min-width: 60px;
+  min-height: 20px;
+  background-color: red;
+}
