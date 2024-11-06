@@ -1,8 +1,10 @@
 <?php
 
-class Migration_CreatePostsTable {
+class Migration_CreatePostsTable
+{
 
-    public function up($conn) {
+    public function up($conn)
+    {
         $query = "
             CREATE TABLE IF NOT EXISTS posts (
                 id SERIAL PRIMARY KEY,
@@ -14,7 +16,8 @@ class Migration_CreatePostsTable {
         $conn->exec($query);
     }
 
-    public function down($conn) {
+    public function down($conn)
+    {
         $query = "DROP TABLE IF EXISTS posts;";
         $conn->exec($query);
     }
