@@ -29,18 +29,14 @@ class UserController
         ]);
     }
 
-    private function getApiUsers(): array
+    public function show(int $userId): void
     {
-        $response = file_get_contents("https://gorest.co.in/public/v2/users");
-        return json_decode($response, true) ?: [];
+        $user = $this->model->getUserById($userId);
+        $template = $this->twig->load('user.html.twig');
+        echo $template->render(["user" => $user]);
     }
 
-    public function userForm(): void
-    {
-        include 'views/form.html';
-    }
-
-    public function addUser(): void
+    public function store(): void
     {
         $name = $_POST['name'];
         $email = $_POST['email'];
@@ -62,6 +58,40 @@ class UserController
         } else {
             echo 'Error adding user';
         }
+    }
+
+    public function edit(int $userId): void
+    {
+        $user = $this->model->getUserById($userId);
+        $template = $this->twig->load('edit.html.twig');
+        echo $template->render(["user" => $user]);
+    }
+
+    public function update(int $userId): void
+    {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $gender = $_POST['gender'];
+        $status = $_POST['status'];
+
+        if ($this->model->updateUserById($userId, $name, $email, $password, $gender, $status)) {
+            echo "<p>User updated successfully!</p>";
+            $this->show($userId);
+        } else {
+            echo 'Error updating user';
+        }
+    }
+
+    public function delete(int $userId): void
+    {
+        $this->model->deleteUserById($userId);
+        echo "User $userId was deleted successfully";
+    }
+
+    public function userForm(): void
+    {
+        include 'views/form.html';
     }
 
     public function paginateUsers(): void
@@ -90,16 +120,9 @@ class UserController
         ]);
     }
 
-    public function show(int $userId): void
+    private function getApiUsers(): array
     {
-        $user = $this->model->getUserById($userId);
-        $template = $this->twig->load('user.html.twig');
-        echo $template->render(["user" => $user]);
-    }
-
-    public function delete(int $userId): void
-    {
-        $this->model->deleteUserById($userId);
-        echo "User $userId was deleted successfully";
+        $response = file_get_contents("https://gorest.co.in/public/v2/users");
+        return json_decode($response, true) ?: [];
     }
 }

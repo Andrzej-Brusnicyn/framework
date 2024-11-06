@@ -24,7 +24,10 @@
 <ul>
   {% if users %}
     {% for user in users %}
-      <li><a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a></li>
+      <li>
+        <a href="/users/{{ user['id'] }}"> {{ user['name'] }}</a>
+        <a href="/users/{{ user['id'] }}/edit">Изменить</a>
+      </li>
     {% endfor %}
   {% else %}
     <span>No users found.</span>

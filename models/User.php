@@ -57,6 +57,21 @@ class User
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
+    public function updateUserById(int $id, string $name, string $email, string $password, string $gender, string $status): bool
+    {
+        $query = "UPDATE users SET name = :name, email = :email, password = :password, gender = :gender, status = :status WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':gender', $gender);
+        $stmt->bindParam(':status', $status);
+
+        return $stmt->execute();
+    }
+
     public function deleteUserById(int $id): bool
     {
         $query = "DELETE FROM users WHERE id = :id";

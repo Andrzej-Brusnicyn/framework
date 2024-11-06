@@ -15,15 +15,16 @@ switch ($requestUri) {
         break;
 
     case '/users':
-        $controller->index();
+        if ($requestMethod === 'GET') {
+            $controller->index();
+        }
+        elseif($requestMethod === 'POST') {
+            $controller->store();
+        }
         break;
 
-    case '/add':
+    case '/new':
         $controller->userForm();
-        break;
-
-    case '/addUser':
-        $controller->addUser();
         break;
 
     case '/list':
@@ -38,11 +39,18 @@ switch ($requestUri) {
                 $controller->show($userId);
             } elseif ($requestMethod === 'DELETE') {
                 $controller->delete($userId);
-            } else {
-                http_response_code(405);
-                echo "Method not allowed";
             }
-        } else {
+        }
+        elseif (preg_match('/^\/users\/(\d+)\/edit$/', $requestUri, $matches)) {
+            $userId = (int)$matches[1];
+            if ($requestMethod === 'POST') {
+                $controller->update($userId);
+            }
+            else {
+                $controller->edit($userId);
+            }
+        }
+        else {
             include 'views/404.html';
         }
         break;

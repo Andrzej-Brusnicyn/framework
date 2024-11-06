@@ -1,0 +1,8 @@
+<form method="POST" action="/users/{{ user['id'] }}/edit">
+  <label>Name: <input type="text" name="name" value="{{ user['name'] }}"></label><br>
+  <label>Email: <input type="email" name="email" value="{{ user['email'] }}"></label><br>
+  <label>Password: <input type="password" name="password" value="{{ user['password ']}}"></label><br>
+  <label>Gender: <input type="text" name="gender" value="{{ user['gender'] }}"></label><br>
+  <label>Status: <input type="text" name="status" value="{{ user['status'] }}"></label><br>
+  <button type="submit">Update User</button>
+</form>
